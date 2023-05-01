@@ -1,4 +1,5 @@
 public enum PetType {
+    // initialize Pet Types
     DOG(2, 2, 2),
     CAT(1, 3, 2),
     BIRD(0.75, 1, 0.75),

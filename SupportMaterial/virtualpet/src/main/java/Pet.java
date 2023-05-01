@@ -7,6 +7,7 @@ public class Pet {
     private int hungriness;
     private int sleepiness;
 
+    // default constructor
     public Pet(String name, PetType type) {
         if (type == null) throw new IllegalArgumentException("PetType cannot be null!");
         this.type = type;
@@ -19,6 +20,7 @@ public class Pet {
         this.sleepiness = 1;
     }
 
+    // copy constructor
     public Pet(Pet other) {
         if (other == null) throw new IllegalArgumentException("Pet to copy cannot be null!");
         this.name = other.getName();
@@ -28,6 +30,7 @@ public class Pet {
         this.sleepiness = other.getSleepiness();
     }
 
+    // getter methods
     public String getName() {
         return this.name;
     }
@@ -62,6 +65,7 @@ public class Pet {
         return (10 - this.happiness);
     }
 
+    // setter methods
     public int changeHappiness(int change) {
         if (this.happiness + change > 10) 
             this.happiness = 10;
@@ -103,6 +107,7 @@ public class Pet {
 
     @Override
     public boolean equals(Object other) {
+        // standard comparisons
         if (this == other)
             return true;
         if(other == null)
@@ -110,6 +115,7 @@ public class Pet {
         if (getClass() != other.getClass())
             return false;
         
+        // special comparisons for the Pet class
         Pet otherPet = (Pet) other;
 
         if (!this.name.equals(otherPet.getName()))
@@ -127,6 +133,7 @@ public class Pet {
     }
 
     public String toString() {
+        // find out emojy
         String emojy = ":-|";
         if (isHappy()) emojy = ":-)"; 
         if (isSad()) emojy = ":-("; 
@@ -153,6 +160,7 @@ public class Pet {
     }
 
     private int calcAttributeChange(int startValue, double multiplier, int change) {
+        // calculate amout to rise or lower attribute
         return (int) Math.round((startValue + multiplier * change) - startValue);
     }
 }
