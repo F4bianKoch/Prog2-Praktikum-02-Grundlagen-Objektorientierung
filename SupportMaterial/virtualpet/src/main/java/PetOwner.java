@@ -1,11 +1,28 @@
+/**
+ * Simulates Owner of one or two virtual Pets.
+ * 
+ * <pre>
+ * Contains all the Methods and Attributes to interact with the Owner.
+ * </pre>
+ * 
+ * @see Pet
+ * @version 1.0
+ */
 public class PetOwner {
     // declaring class Attributes
     private final String name;
     private final Pet firstPet;
     private final Pet secondPet;
 
-    // default constructor - 2 Pets
+    /**
+     * Constructor for Owner with 2 Pets.
+     * 
+     * @param name cannot be null
+     * @param firstPet cannot be null
+     * @param secondPet
+     */
     public PetOwner(String name, Pet firstPet, Pet secondPet) {
+        // default constructor - 2 Pets
         if (name == null || name.equals(""))
             throw new IllegalArgumentException("Name cannot be null or empty!");
         if (firstPet == null)
@@ -16,8 +33,18 @@ public class PetOwner {
         this.secondPet = secondPet;
     }
 
-    // default constructor - 1 Pet
+    /**
+     * Constructor for Owner with 1 Pets.
+     * 
+     * <pre>
+     * Sets secondPet to null.
+     * </pre>
+     * 
+     * @param name cannot be null
+     * @param firstPet cannot be null
+     */
     public PetOwner(String name, Pet firstPet) {
+        // default constructor - 1 Pet
         if (name == null || name.equals(""))
             throw new IllegalArgumentException("Name cannot be null or empty!");
         if (firstPet == null)
@@ -28,8 +55,17 @@ public class PetOwner {
         this.secondPet = null;  // set second Pet to null
     }
 
-    // copy constructor
+    /**
+     * Generates deep copy of Owner {other}
+     * 
+     * <pre>
+     * Pets are copied too.
+     * </pre>
+     * 
+     * @param other
+     */
     public PetOwner(PetOwner other) {
+        // copy constructor
         // copy Owner
         if (other == null)
             throw new IllegalArgumentException("Owner to copy cannot be null!");
@@ -45,18 +81,36 @@ public class PetOwner {
     }
 
     // getter Methods
+    /**
+     * @return name
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * @return firstPet
+     */
     public Pet getFirstPet() {
         return this.firstPet;
     }
 
+    /**
+     * @return secondPet
+     */
     public Pet getSecondPet() {
         return this.secondPet;
     }
 
+    /**
+     * Method to compare this Owner deeply with given {other} Owner.
+     * 
+     * <pre>
+     * True if Owners and thier Pets are equal. False if Owner and their Pets are not equal.
+     * </pre>
+     * 
+     * @return boolean
+     */
     @Override
     public boolean equals(Object other) {
         // standard comparisons
@@ -80,16 +134,28 @@ public class PetOwner {
         return true;
     }
 
-    // Displays state of owners pets
+    /**
+     * String representation of Owner.
+     * 
+     * <pre>
+     * Formates states of Owners Pet/s into a string.
+     * </pre>
+     * 
+     * @return String representation
+     */
     public String toString() {
+        // Displays state of owners pets
         if (secondPet == null)
             return this.name + "\n- First pet: " + firstPet.toString() + "\n- Second pet: none";
 
         return this.name + "\n- First pet: " + firstPet.toString() + "\n- Second pet: " + secondPet.toString();
     }
 
-    // algorithm to take care of pet/s
+    /**
+     * Takes care of Pet so that no values drop to 0.
+     */
     public void takeCareOfPets() {
+        // algorithm to take care of pet/s
         if (firstPet.getHungriness() >= firstPet.getSleepiness() && firstPet.getHungriness() >= firstPet.getSadness()) {
             firstPet.eat();
         } else if (firstPet.getSleepiness() >= firstPet.getHungriness() && firstPet.getSleepiness() >= firstPet.getSadness()) {

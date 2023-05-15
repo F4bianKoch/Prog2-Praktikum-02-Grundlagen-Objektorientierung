@@ -1,3 +1,12 @@
+/**
+ * Enum for different Pet Types.
+ * 
+ * <pre>
+ * Every PetType has multiple porperties that manage further identificaton.
+ * </pre>
+ * 
+ * @version 1.0
+ */
 public enum PetType {
     // initialize Pet Types
     DOG(2, 2, 2),
@@ -10,22 +19,44 @@ public enum PetType {
     private final double hungrinessMultiplier;
     private final double sleepinessMultiplier;
 
-    // default constructor
+    /**
+     * Constructor for PetType.
+     * 
+     * <pre>
+     * initializes the following Attributes without any further logic.
+     * </pre>
+     * 
+     * @param happinessMultiplier
+     * @param hungrinessMultiplier
+     * @param sleepinessMultiplier
+     * 
+     * @see PetType
+     */
     private PetType(double happinessMultiplier, double hungrinessMultiplier, double sleepinessMultiplier) {
+        // default constructor
         this.happinessMultiplier = happinessMultiplier;
         this.hungrinessMultiplier = hungrinessMultiplier;
         this.sleepinessMultiplier = sleepinessMultiplier;
     }
 
     // getter Methods
+    /**
+     * @return happinessMultiplier
+     */
     public double getHappinessMultiplier() {
         return happinessMultiplier;
     }
     
+    /**
+     * @return hungrinessMultiplier
+     */
     public double getHungrinessMultiplier() {
         return hungrinessMultiplier;
     }
 
+    /**
+     * @return sleepinessMultiplier
+     */
     public double getSleepinessMultiplier() {
         return sleepinessMultiplier;
     }
