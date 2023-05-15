@@ -15,6 +15,7 @@ public class Pet {
         if (name == null || name.equals("")) throw new IllegalArgumentException("Name cannot be null or empty!");
         this.name = name;
 
+        // set property defaults
         this.happiness = 5;
         this.hungriness = 3;
         this.sleepiness = 1;

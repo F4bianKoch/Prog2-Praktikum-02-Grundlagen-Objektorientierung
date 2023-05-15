@@ -1,12 +1,10 @@
-import java.nio.file.FileAlreadyExistsException;
-
-import com.google.common.base.Objects;
-
 public class PetOwner {
+    // declaring class Attributes
     private final String name;
     private final Pet firstPet;
     private final Pet secondPet;
 
+    // default constructor - 2 Pets
     public PetOwner(String name, Pet firstPet, Pet secondPet) {
         if (name == null || name.equals(""))
             throw new IllegalArgumentException("Name cannot be null or empty!");
@@ -18,6 +16,7 @@ public class PetOwner {
         this.secondPet = secondPet;
     }
 
+    // default constructor - 1 Pet
     public PetOwner(String name, Pet firstPet) {
         if (name == null || name.equals(""))
             throw new IllegalArgumentException("Name cannot be null or empty!");
@@ -26,13 +25,17 @@ public class PetOwner {
 
         this.name = name;
         this.firstPet = firstPet;
-        this.secondPet = null;
+        this.secondPet = null;  // set second Pet to null
     }
 
+    // copy constructor
     public PetOwner(PetOwner other) {
+        // copy Owner
         if (other == null)
             throw new IllegalArgumentException("Owner to copy cannot be null!");
         this.name = other.name;
+
+        // copy Pets
         this.firstPet = new Pet(other.firstPet);
         if (other.secondPet != null) {
             this.secondPet = new Pet(other.secondPet);
@@ -41,6 +44,7 @@ public class PetOwner {
         }
     }
 
+    // getter Methods
     public String getName() {
         return this.name;
     }
@@ -55,6 +59,7 @@ public class PetOwner {
 
     @Override
     public boolean equals(Object other) {
+        // standard comparisons
         if (this == other) 
             return true;
         if (other == null)
@@ -62,6 +67,7 @@ public class PetOwner {
         if (getClass() != other.getClass())
             return false;
 
+        // special comparisons for the PetOwner class
         PetOwner otherPetOwner = (PetOwner) other;
 
         if (!this.name.equals(otherPetOwner.getName()))
@@ -74,6 +80,7 @@ public class PetOwner {
         return true;
     }
 
+    // Displays state of owners pets
     public String toString() {
         if (secondPet == null)
             return this.name + "\n- First pet: " + firstPet.toString() + "\n- Second pet: none";
@@ -81,6 +88,7 @@ public class PetOwner {
         return this.name + "\n- First pet: " + firstPet.toString() + "\n- Second pet: " + secondPet.toString();
     }
 
+    // algorithm to take care of pet/s
     public void takeCareOfPets() {
         if (firstPet.getHungriness() >= firstPet.getSleepiness() && firstPet.getHungriness() >= firstPet.getSadness()) {
             firstPet.eat();
